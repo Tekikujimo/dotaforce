@@ -13,7 +13,12 @@
 	<packaging>war</packaging>
 	<name>DotaForce</name>
 	<description>Demo project for Spring Boot</description>
-
+	<repositories>
+    	<repository>
+    		<id>codelds</id>
+    		<url>https://code.lds.org/nexus/content/groups/main-repo</url>
+    	</repository>
+	</repositories>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -55,7 +60,11 @@
 		</dependency>
 		
 		<!-- Oracle JDBC driver -->
-		
+		<dependency>
+    	    <groupId>com.oracle</groupId>
+    		<artifactId>ojdbc8</artifactId>
+    		<version>12.2.0.1</version>
+    	</dependency>
 
 	</dependencies>
 	
