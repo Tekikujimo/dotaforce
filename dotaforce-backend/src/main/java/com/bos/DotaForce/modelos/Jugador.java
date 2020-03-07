@@ -20,7 +20,7 @@ import java.util.*;
 public class Jugador{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
     
@@ -39,11 +39,11 @@ public class Jugador{
     @Column
     private String pais;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "Jugadores")
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "jugadores")
     private List<Rol> roles;
 
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "Jugadores")
-    private Resultado resultado;
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "jugador")
+    private List<Resultado> resultado;
 
     public Long getId() {
         return id;
@@ -101,11 +101,11 @@ public class Jugador{
         this.roles = roles;
     }
 
-    public Resultado getResultado() {
+    public List<Resultado> getResultado() {
         return resultado;
     }
 
-    public void setResultado(Resultado resultado) {
+    public void setResultado(List<Resultado> resultado) {
         this.resultado = resultado;
     }
 

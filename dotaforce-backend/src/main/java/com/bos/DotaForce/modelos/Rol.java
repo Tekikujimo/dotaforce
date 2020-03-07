@@ -17,7 +17,7 @@ import java.util.*;
 public class Rol{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
@@ -27,7 +27,7 @@ public class Rol{
     @Column
     private int num_posicion;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Jugador.class)
     private List<Jugador> jugadores;
 
     public Long getId() {
