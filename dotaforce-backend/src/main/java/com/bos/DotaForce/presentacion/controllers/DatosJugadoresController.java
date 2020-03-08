@@ -11,13 +11,13 @@ import com.bos.DotaForce.modelos.Jugador;
 import com.bos.DotaForce.servicios.services.JugadoresService;
 
 @RestController
-@RequestMapping("/dataplayers")
+@RequestMapping("/players")
 public class DatosJugadoresController {
 	
 	@Autowired
 	JugadoresService jugadoresService;
 
-	@RequestMapping(value="/get", method=RequestMethod.GET)
+	@RequestMapping(value="/getAll", method=RequestMethod.GET)
 	public List<Jugador> obtenerDatosJugadores(){
 		List<Jugador> jugadores = jugadoresService.ObtenerTodosLosJugadores();
 		return jugadores;
