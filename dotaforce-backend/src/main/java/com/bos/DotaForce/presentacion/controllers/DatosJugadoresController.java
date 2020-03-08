@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bos.DotaForce.modelos.Jugador;
-import com.bos.DotaForce.servicios.repositories.JugadoresRepository;
+import com.bos.DotaForce.servicios.services.JugadoresService;
 
 @RestController
 @RequestMapping("/dataplayers")
 public class DatosJugadoresController {
 	
 	@Autowired
-	JugadoresRepository jugadorRepository;
+	JugadoresService jugadoresService;
 
 	@RequestMapping(value="/get", method=RequestMethod.GET)
 	public List<Jugador> obtenerDatosJugadores(){
-		List<Jugador> jugadores = jugadorRepository.findAll();
+		List<Jugador> jugadores = jugadoresService.ObtenerTodosLosJugadores();
 		return jugadores;
 	}
 	
