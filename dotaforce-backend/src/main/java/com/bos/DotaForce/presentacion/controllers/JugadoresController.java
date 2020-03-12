@@ -12,7 +12,7 @@ import com.bos.DotaForce.servicios.services.JugadoresService;
 
 @RestController
 @RequestMapping("/players")
-public class DatosJugadoresController {
+public class JugadoresController {
 	
 	@Autowired
 	JugadoresService jugadoresService;
