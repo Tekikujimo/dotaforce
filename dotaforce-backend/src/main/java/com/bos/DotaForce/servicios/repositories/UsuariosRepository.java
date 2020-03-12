@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bos.DotaForce.modelos.Usuario;
 
+@Repository
 public interface UsuariosRepository extends JpaRepository<Usuario, Long> {
 
 }
