@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
+.centrar {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bajar-2Percent {
+    margin-top: 2%;
+}
+
+#list {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+}
+
+#list td,
+#list th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#list tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#list tr:hover {
+    background-color: #ddd;
+}
+
+#list th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}

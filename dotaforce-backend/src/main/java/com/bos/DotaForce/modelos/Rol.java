@@ -1,15 +1,6 @@
 package com.bos.DotaForce.modelos;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
+import javax.persistence.*;
 import java.util.*; 
 
 @Entity
@@ -27,8 +18,8 @@ public class Rol{
     @Column
     private int num_posicion;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Jugador.class)
-    private List<Jugador> jugadores;
+    /*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Jugador.class,mappedBy="roles")
+    private List<Jugador> jugadores;*/
 
     public Long getId() {
         return id;
@@ -54,13 +45,13 @@ public class Rol{
         this.num_posicion = num_posicion;
     }
 
-    public List<Jugador> getJugadores() {
+    /*public List<Jugador> getJugadores() {
         return jugadores;
     }
 
     public void setJugadores(List<Jugador> jugadores) {
         this.jugadores = jugadores;
-    }
+    }*/
 
     
 
