@@ -2,17 +2,7 @@ package com.bos.DotaForce.modelos;
 
 import java.text.DateFormat;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 import java.util.*;
 
 @Entity
@@ -39,11 +29,26 @@ public class Jugador{
     @Column
     private String pais;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "jugadores")
-    private List<Rol> roles;
+    @JoinTable(name = "jugador_roles",
+            joinColumns = {@JoinColumn(name = "JUGADOR_ID_FK", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "ROL_ID_FK", referencedColumnName = "id")}
+    )  
+    // De Jugador --> Roles es la relacion
+    // El ManyToMany solo se usara si sabemos que nuestros roles seran usados por varios jugadores
+    /* Si declaramos con list aparecera esta excepcion:
+    org.hibernate.loader.MultipleBagFetchException: cannot simultaneously fetch multiple bags: [com.bos.DotaForce.modelos.Jugador.resultado, com.bos.DotaForce.modelos.Jugador.roles]*/
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private Set<Rol> roles;
 
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "jugador")
-    private List<Resultado> resultado;
+    @JoinTable(name = "jugador_resultados",
+            joinColumns = {@JoinColumn(name = "JUGADOR_ID_FK", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "RESULTADO_ID_FK", referencedColumnName = "id")}
+    )
+    // De Jugador --> resultados es la relacion
+    // El OneToMany solo se usara si sabemos que nuestros resultados seran usados solo por un jugador en concreto y no por otros
+    // El ManyToOne solo se usara si sabemos que un resultado sera usado por varios jugadores
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private Set<Resultado> resultado;
 
     public Long getId() {
         return id;
@@ -93,19 +98,19 @@ public class Jugador{
         this.pais = pais;
     }
 
-    public List<Rol> getRoles() {
+    public Set<Rol> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Rol> roles) {
+    public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
 
-    public List<Resultado> getResultado() {
+    public Set<Resultado> getResultado() {
         return resultado;
     }
 
-    public void setResultado(List<Resultado> resultado) {
+    public void setResultado(Set<Resultado> resultado) {
         this.resultado = resultado;
     }
 

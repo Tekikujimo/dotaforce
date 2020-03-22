@@ -14,7 +14,7 @@
                     <td>{{i.id}}</td>
                     <td>{{i.nombre}}</td>
                     <td>{{i.nickname}}</td>
-                    <td>{{i.rol}}</td>
+                    <td><span *ngFor="let j of i.roles">{{j.denominacion}},</span></td>
                 </tr>
             </tbody>
         </table>

@@ -1,14 +1,6 @@
 package com.bos.DotaForce.modelos;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Resultados")
@@ -37,8 +29,8 @@ public class Resultado{
     @Column(name ="oroAcumulado")
     private int oro_acumulado;
 
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private Jugador jugador;
+    /*@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Jugador.class, mappedBy="resultado")
+    private Jugador jugador;*/
 
     public Long getId() {
         return id;
@@ -96,13 +88,13 @@ public class Resultado{
         this.oro_acumulado = oro_acumulado;
     }
 
-    public Jugador getJugador() {
+    /*public Jugador getJugador() {
         return jugador;
     }
 
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
-    }
+    }*/
 
     
     
