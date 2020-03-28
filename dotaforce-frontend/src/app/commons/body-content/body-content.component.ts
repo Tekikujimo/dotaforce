@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from "rxjs/operators";
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-body-content',
@@ -9,24 +7,18 @@ import { map } from "rxjs/operators";
 })
 export class BodyContentComponent implements OnInit {
 
-  jugadores:any;
 
-  constructor(private http: HttpClient) { }
+  @Input('columnNames')
+  columNames:any;
+
+  @Input('data')
+  data:any[];
+
+  constructor() { }
 
   ngOnInit(): void {
-    /*this.http.jsonp("http://localhost:8090/players/getAll",'callback').pipe(map(data => {
-      console.log("Inside map");
-
-      console.log(data);
-  })
-  ).subscribe();*/
-
-  this.http.get('/players/getAll')
-  .subscribe(res => {
-    this.jugadores=res;
-    console.log(this.jugadores);
-
-  });
+    console.log("COLUMNS");
+    console.log(this.columNames);
   }
     
   }

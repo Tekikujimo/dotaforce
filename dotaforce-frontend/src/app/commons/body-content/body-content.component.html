@@ -2,20 +2,30 @@
     <div class="col-md-12">
         <table id="list" class="centrar bajar-2Percent">
             <thead>
-                <tr>
-                    <th>id</th>
-                    <th>nombre</th>
-                    <th>nickname</th>
-                    <th>rol</th>
+                <tr *ngFor="let names of columNames">
+                    <th><strong>{{names}}</strong></th>
                 </tr>
+
+                <!--<tr>
+                    <th><strong>ID</strong></th>
+                    <th><strong>NOMBRE</strong></th>
+                    <th><strong>NICKNAME</strong></th>
+                    <th><strong>ROLES</strong></th>
+                </tr>-->
             </thead>
             <tbody>
-                <tr *ngFor="let i of jugadores">
-                    <td>{{i.id}}</td>
+                <tr *ngFor="let i of data">
                     <td>{{i.nombre}}</td>
                     <td>{{i.nickname}}</td>
                     <td><span *ngFor="let j of i.roles">{{j.denominacion}},</span></td>
                 </tr>
+                <!-- <tr *ngFor="let i of jugadores">
+                        <td>{{i.id}}</td>
+                        <td>{{i.nombre}}</td>
+                        <td>{{i.nickname}}</td>
+                        <td><span *ngFor="let j of i.roles">{{j.denominacion}},</span></td>
+                    </tr>
+                -->
             </tbody>
         </table>
     </div>
