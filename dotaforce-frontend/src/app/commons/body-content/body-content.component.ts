@@ -8,18 +8,18 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BodyContentComponent implements OnInit {
 
 
-  @Input('columnNames')
+  @Input()
   columNames:any;
 
-  @Input('data')
+  @Input()
   data:any[];
+
+  @Input()
+  keyword:string;
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log("COLUMNS");
-    console.log(this.columNames);
-  }
+  ngOnInit(): void {}
     
   }
 

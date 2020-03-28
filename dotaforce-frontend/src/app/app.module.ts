@@ -13,6 +13,7 @@ import { ResultComponent } from './results/result/result.component';
 import { RolComponent } from './roles/rol/rol.component';
 import { UserComponent } from './users/user/user.component';
 import { ActionComponent } from './actions/action/action.component';
+import { IterateDataRoutesComponent } from './commons/inputs/iterate-data-routes/iterate-data-routes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ActionComponent } from './actions/action/action.component';
     ResultComponent,
     RolComponent,
     UserComponent,
-    ActionComponent
+    ActionComponent,
+    IterateDataRoutesComponent
   ],
   imports: [
     BrowserModule,
