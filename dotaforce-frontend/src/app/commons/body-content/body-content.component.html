@@ -1,25 +1,11 @@
 <div class="row">
     <div class="col-md-12">
         <table id="list" class="centrar bajar-2Percent">
-            <thead>
+            <tbody app-iterate-data-routes [data]="data" [keyword]="keyword">
                 <tr>
                     <th *ngFor="let names of columNames"><strong>{{names}}</strong></th>
                 </tr>
-            </thead>
-
-            <app-iterate-data-routes [data]="data" [keyword]="keyword"></app-iterate-data-routes>
-
-            <!--<tbody>
-                <tr *ngFor="let i of data">
-                    <app-iterate-data-routes [data]="i" [keyword]="keyword"></app-iterate-data-routes>
-                    <span>
-                        <td>{{i.nombre}}</td>
-                        <td>{{i.nickname}}</td>
-                        <td><span *ngFor="let j of i.roles">{{j.denominacion}},</span></td>
-                    </span>
-
-                </tr>
-            </tbody>-->
+            </tbody>
         </table>
     </div>
 </div>

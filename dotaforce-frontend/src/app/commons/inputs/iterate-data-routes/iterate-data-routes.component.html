@@ -1,20 +1,20 @@
 <ng-content></ng-content>
-<tbody *ngIf="keyword=='players'">
+<ng-container *ngIf="keyword=='players'">
     <tr *ngFor="let i of data">
         <td>{{i.nombre}}</td>
         <td>{{i.nickname}}</td>
         <td><span *ngFor="let j of i.roles">{{j.denominacion}},</span></td>
     </tr>
-</tbody>
+</ng-container>
 
-<tbody *ngIf="keyword=='results'">
+<ng-container *ngIf="keyword=='results'">
     <!--TODO-->
-</tbody>
+</ng-container>
 
-<tbody *ngIf="keyword=='users'">
+<ng-container *ngIf="keyword=='users'">
     <!--TODO-->
-</tbody>
+</ng-container>
 
-<tbody *ngIf="keyword=='roles'">
+<ng-container *ngIf="keyword=='roles'">
     <!--TODO-->
-</tbody>
+</ng-container>

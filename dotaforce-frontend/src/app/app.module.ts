@@ -15,6 +15,9 @@ import { UserComponent } from './users/user/user.component';
 import { ActionComponent } from './actions/action/action.component';
 import { IterateDataRoutesComponent } from './commons/inputs/iterate-data-routes/iterate-data-routes.component';
 
+//Services
+import {RequestsService} from './commons/services/requests-service.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,7 @@ import { IterateDataRoutesComponent } from './commons/inputs/iterate-data-routes
     HttpClientJsonpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [RequestsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
