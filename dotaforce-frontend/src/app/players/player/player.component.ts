@@ -10,7 +10,7 @@ import {RequestsService} from '../../commons/services/requests-service.service'
 export class PlayerComponent implements OnInit {
 
   players:any;
-  columNames:any[] = ["NOMBRE","NICKNAMES","ROLES"]; 
+  columNames:any[] = ["Nombre","Edad","País","Fecha de Nacimiento","Nickname","Roles","Acciones"]; 
 
   constructor(private rs:RequestsService) { }
 
