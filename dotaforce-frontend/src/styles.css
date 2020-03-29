@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 .centrar {
-    margin: 0 auto;
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .bajar-2Percent {
@@ -32,7 +32,7 @@
 #list th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
+    text-align: center;
+    background-color: gray;
     color: white;
 }

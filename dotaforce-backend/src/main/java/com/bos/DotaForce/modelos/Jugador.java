@@ -3,6 +3,9 @@ package com.bos.DotaForce.modelos;
 import java.text.DateFormat;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.Type;
+
 import java.util.*;
 
 @Entity
@@ -24,7 +27,8 @@ public class Jugador{
     private int edad;
 
     @Column
-    private DateFormat fechaNacimiento;
+    @Type(type = "date")
+    private Date fechaNacimiento;
 
     @Column
     private String pais;
@@ -82,11 +86,11 @@ public class Jugador{
         this.edad = edad;
     }
 
-    public DateFormat getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(DateFormat fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

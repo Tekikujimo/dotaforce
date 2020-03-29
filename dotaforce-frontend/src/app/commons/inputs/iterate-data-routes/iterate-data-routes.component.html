@@ -1,0 +1,24 @@
+<ng-content></ng-content>
+<ng-container *ngIf="keyword=='players'">
+    <tr *ngFor="let i of data">
+        <td>{{i.nombre}}</td>
+        <td>{{i.edad}}</td>
+        <td>{{i.pais}}</td>
+        <td>{{(i.fechaNacimiento==null?'sin Registrar':i.fechaNacimiento)}}</td>
+        <td>{{i.nickname}}</td>
+        <td><span *ngFor="let j of i.roles">{{j.denominacion}},</span></td>
+        <td><button class="btn btn-info">Editar</button>&nbsp;<button class="btn btn-danger">Borrar</button></td>
+    </tr>
+</ng-container>
+
+<ng-container *ngIf="keyword=='results'">
+    <!--TODO-->
+</ng-container>
+
+<ng-container *ngIf="keyword=='users'">
+    <!--TODO-->
+</ng-container>
+
+<ng-container *ngIf="keyword=='roles'">
+    <!--TODO-->
+</ng-container>
