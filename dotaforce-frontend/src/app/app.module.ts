@@ -16,7 +16,10 @@ import { ActionComponent } from './actions/action/action.component';
 import { IterateDataRoutesComponent } from './commons/inputs/iterate-data-routes/iterate-data-routes.component';
 
 //Services
-import {RequestsService} from './commons/services/requests-service.service'
+import {RequestsService} from './commons/services/requests-service.service';
+import { RegisterPlayerComponent } from './actions/action/register/register-player/register-player.component';
+import { RegisterResultComponent } from './actions/action/register/register-result/register-result.component';
+import { RegisterUserComponent } from './actions/action/register/register-user/register-user.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import {RequestsService} from './commons/services/requests-service.service'
     RolComponent,
     UserComponent,
     ActionComponent,
-    IterateDataRoutesComponent
+    IterateDataRoutesComponent,
+    RegisterPlayerComponent,
+    RegisterResultComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,

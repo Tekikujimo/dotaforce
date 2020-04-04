@@ -1,1 +1,13 @@
-<p>action works!</p>
+<!--Componente de registrarJugador-->
+<ng-container *ngIf="accion=='addPlayer'">
+    <app-register-player></app-register-player>
+</ng-container>
+<!--Componente de registrarResultado-->
+<ng-container *ngIf="accion=='addResult'">
+    <app-register-result></app-register-result>
+</ng-container>
+
+<!--Componente de AltaUsuario-->
+<ng-container *ngIf="accion=='addUser'">
+    <app-register-user></app-register-user>
+</ng-container>
