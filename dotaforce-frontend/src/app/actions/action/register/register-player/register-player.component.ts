@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RequestsService} from '../../../../commons/services/requests-service.service';
 
 @Component({
   selector: 'app-register-player',
@@ -9,14 +10,17 @@ export class RegisterPlayerComponent implements OnInit {
 
   player:any;
   
-  constructor() { }
+  constructor(private rs:RequestsService) { }
 
   ngOnInit(): void {
-    
+    this.player = {};
   }
 
   onSubmit():void{
     console.log("ENVIAR INFO PLAYER");
+    this.rs.savePlayer(this.player).subscribe(result =>{
+      console.log(result);
+    });
   }
 
 }

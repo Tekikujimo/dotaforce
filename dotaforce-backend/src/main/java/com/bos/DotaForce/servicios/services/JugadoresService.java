@@ -10,4 +10,5 @@ public interface JugadoresService {
 
 	List<Jugador> ObtenerTodosLosJugadores();
 	
+	Jugador saveJugador(Jugador jugador);
 }

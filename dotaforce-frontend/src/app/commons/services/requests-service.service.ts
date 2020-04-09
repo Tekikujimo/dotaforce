@@ -25,4 +25,10 @@ export class RequestsService {
   getUsers():Observable<Object>{
     return this.http.get('/users/getAll');
   }
+
+  savePlayer(player:any):Observable<Object>{
+    return this.http.post('/players/savePlayer',player);
+  }
+
+
 }
