@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'results', component: ResultComponent },
   { path: 'roles', component: RolComponent },
   { path: 'users', component: UserComponent },
-  { path: 'actions/:action', component: ActionComponent }
+  { path: 'actions/:action', component: ActionComponent },
+  { path: 'actions/:action/:id', component: ActionComponent }
 
 ];
 

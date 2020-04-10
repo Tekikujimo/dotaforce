@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {RequestsService} from '../../../../commons/services/requests-service.service';
+import { ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-register-player',
@@ -8,18 +11,34 @@ import {RequestsService} from '../../../../commons/services/requests-service.ser
 })
 export class RegisterPlayerComponent implements OnInit {
 
+  @Input()
+  edit:boolean;
+
   player:any;
   
-  constructor(private rs:RequestsService) { }
+  constructor(private rs:RequestsService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.player = {};
+    console.log("SE EDITA?");
+    console.log(this.edit);
+    if(this.edit){
+      this.route.params.subscribe(params => {
+        let id = params['id'];
+        this.rs.getPlayer(id).subscribe(result =>{
+          this.player = result;
+        });
+     });
+    }
   }
 
   onSubmit():void{
     console.log("ENVIAR INFO PLAYER");
     this.rs.savePlayer(this.player).subscribe(result =>{
       console.log(result);
+      if(result!=null && !this.edit){
+        this.player={};
+      };
     });
   }
 
