@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {RequestsService} from '../../../../commons/services/requests-service.service';
 import { ActivatedRoute } from '@angular/router';
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-register-player',
@@ -28,10 +28,10 @@ export class RegisterPlayerComponent implements OnInit {
         this.rs.getPlayer(idPlayer).subscribe(result =>{
           this.player = result;
           console.log(this.player);
-
+          
           this.player.roles.forEach(rol => {
             selectedRoles.push(rol.id);
-            //$("#roles selected").value(rol.id);
+            //$('#roles option[value="'+rol.id+'"]').attr('selected', 'selected');
           });
 
           this.player.roles = selectedRoles;

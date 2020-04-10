@@ -21,4 +21,10 @@ export class IterateDataRoutesComponent implements OnInit {
     console.log(this.keyword);
   }
 
+  deletePlayer(idPlayer): void{
+    console.log(idPlayer);
+    //Borrar jugador
+    //this.data.splice(1,);
+  }
+
 }
