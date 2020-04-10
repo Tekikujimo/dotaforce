@@ -15,6 +15,7 @@ import com.bos.DotaForce.modelos.Jugador;
 import com.bos.DotaForce.modelos.Rol;
 import com.bos.DotaForce.modelos.DTO.JugadorDTO;
 import com.bos.DotaForce.servicios.repositories.JugadoresRepository;
+import com.bos.DotaForce.servicios.repositories.RolesRepository;
 import com.bos.DotaForce.servicios.services.JugadoresService;
 
 @Service
@@ -22,6 +23,9 @@ public class JugadoresServiceImpl implements JugadoresService{
 
 	@Autowired
 	private JugadoresRepository jugadorRepository;
+	
+	@Autowired
+	private RolesRepository rolesRepository;
 	
 	@Override
 	public List<Jugador> ObtenerTodosLosJugadores() {
@@ -42,9 +46,7 @@ public class JugadoresServiceImpl implements JugadoresService{
 		player.setPais(jugadorDTO.getPais());
 		player.setFechaNacimiento(jugadorDTO.getFechaNacimiento());
 		jugadorDTO.getRoles().forEach(rolId->{
-			Rol rol = new Rol();
-			rol.setId(rolId);
-			rol.setNum_posicion((int) (long) rolId);
+			Rol rol = rolesRepository.findRolById(rolId);
 			rolesPlayer.add(rol);
 		});
 		player.setRoles(rolesPlayer);

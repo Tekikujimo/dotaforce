@@ -3,7 +3,6 @@ import {RequestsService} from '../../../../commons/services/requests-service.ser
 import { ActivatedRoute } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-register-player',
   templateUrl: './register-player.component.html',
@@ -24,9 +23,19 @@ export class RegisterPlayerComponent implements OnInit {
     console.log(this.edit);
     if(this.edit){
       this.route.params.subscribe(params => {
-        let id = params['id'];
-        this.rs.getPlayer(id).subscribe(result =>{
+        let idPlayer = params['id'];
+        let selectedRoles = [];
+        this.rs.getPlayer(idPlayer).subscribe(result =>{
           this.player = result;
+          console.log(this.player);
+
+          this.player.roles.forEach(rol => {
+            selectedRoles.push(rol.id);
+            //$("#roles selected").value(rol.id);
+          });
+
+          this.player.roles = selectedRoles;
+
         });
      });
     }
