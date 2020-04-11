@@ -14,6 +14,14 @@ export class RequestsService {
     return this.http.get('/players/getAll');
   }
 
+  getPlayer(idPlayer:any):Observable<Object>{
+    return this.http.get('/players/getPlayer/'+idPlayer);
+  } 
+
+  deletePlayer(idPlayer:any):Observable<Object>{
+    return this.http.delete('/players/deletePlayer/'+idPlayer);
+  } 
+
   getResults():Observable<Object>{
     return this.http.get('/results/getAll');
   }
@@ -25,4 +33,10 @@ export class RequestsService {
   getUsers():Observable<Object>{
     return this.http.get('/users/getAll');
   }
+
+  savePlayer(player:any):Observable<Object>{
+    return this.http.post('/players/savePlayer',player);
+  }
+
+
 }

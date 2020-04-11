@@ -1,13 +1,18 @@
 package com.bos.DotaForce.presentacion.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bos.DotaForce.modelos.Jugador;
+import com.bos.DotaForce.modelos.DTO.JugadorDTO;
 import com.bos.DotaForce.servicios.services.JugadoresService;
 
 @RestController
@@ -23,4 +28,20 @@ public class JugadoresController {
 		return jugadores;
 	}
 	
+	@RequestMapping(value="/savePlayer", method=RequestMethod.POST)
+	public ResponseEntity<Jugador> guardarJugador(@RequestBody JugadorDTO jugador){
+		Jugador player = jugadoresService.saveJugador(jugador);
+		return ResponseEntity.ok(player);
+	}
+	
+	@RequestMapping(value="/getPlayer/{idJugador}", method=RequestMethod.GET)
+	public ResponseEntity<Optional<Jugador>> obtenerJugador(@PathVariable Long idJugador){
+		Optional<Jugador> player = jugadoresService.obtenerJugador(idJugador);
+		return ResponseEntity.ok(player);
+	}
+	
+	@RequestMapping(value="/deletePlayer/{idJugador}", method=RequestMethod.DELETE)
+	public void borrarJugador(@PathVariable Long idJugador){
+		jugadoresService.borrarJugador(idJugador);
+	}
 }

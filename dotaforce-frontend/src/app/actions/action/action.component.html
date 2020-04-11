@@ -1,7 +1,12 @@
 <!--Componente de registrarJugador-->
 <ng-container *ngIf="accion=='addPlayer'">
-    <app-register-player></app-register-player>
+    <app-register-player [edit]="false"></app-register-player>
 </ng-container>
+
+<ng-container *ngIf="accion=='editPlayer'">
+    <app-register-player [edit]="true"></app-register-player>
+</ng-container>
+
 <!--Componente de registrarResultado-->
 <ng-container *ngIf="accion=='addResult'">
     <app-register-result></app-register-result>
