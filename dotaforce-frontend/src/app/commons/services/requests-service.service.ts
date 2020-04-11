@@ -18,6 +18,10 @@ export class RequestsService {
     return this.http.get('/players/getPlayer/'+idPlayer);
   } 
 
+  deletePlayer(idPlayer:any):Observable<Object>{
+    return this.http.delete('/players/deletePlayer/'+idPlayer);
+  } 
+
   getResults():Observable<Object>{
     return this.http.get('/results/getAll');
   }

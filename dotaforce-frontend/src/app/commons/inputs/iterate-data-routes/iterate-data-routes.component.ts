@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import {RequestsService} from '../../services/requests-service.service';
 
 @Component({
   selector: '[app-iterate-data-routes]',
@@ -7,7 +8,7 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class IterateDataRoutesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private rs:RequestsService) { }
 
   @Input()
   data:any
@@ -22,9 +23,15 @@ export class IterateDataRoutesComponent implements OnInit {
   }
 
   deletePlayer(idPlayer): void{
-    console.log(idPlayer);
-    //Borrar jugador
-    //this.data.splice(1,);
+    for(let i = 0; i<this.data.length ; i++){
+      if(this.data[i].id === idPlayer){
+        let elementToRemove = this.data.indexOf(this.data[i]);
+        this.data.splice(elementToRemove,1);
+        this.rs.deletePlayer(idPlayer).subscribe(result=>{});
+        break;
+      }
+    }
+
   }
 
 }

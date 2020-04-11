@@ -14,4 +14,6 @@ public interface JugadoresService {
 	Jugador saveJugador(JugadorDTO jugadorDTO);
 	
 	Optional<Jugador> obtenerJugador(Long idJugador);
+	
+	void borrarJugador(Long idJugador);
 }

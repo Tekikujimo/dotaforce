@@ -59,4 +59,10 @@ public class JugadoresServiceImpl implements JugadoresService{
 		return jugadorRepository.findById(idJugador);
 	}
 
+	@Override
+	@Transactional
+	public void borrarJugador(Long idJugador) {
+		jugadorRepository.deleteById(idJugador);
+	}
+
 }
