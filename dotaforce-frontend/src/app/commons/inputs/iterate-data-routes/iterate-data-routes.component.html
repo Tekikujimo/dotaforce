@@ -4,7 +4,7 @@
         <td>{{i.nombre}}</td>
         <td>{{i.edad}}</td>
         <td>{{i.pais}}</td>
-        <td>{{(i.fechaNacimiento==null?'sin Registrar':i.fechaNacimiento)}}</td>
+        <td>{{(i.fechaNacimiento==null?'sin Registrar':i.fechaNacimiento | date:'dd/MM/yyyy')}}</td>
         <td>{{i.nickname}}</td>
         <td><span *ngFor="let j of i.roles">{{j.denominacion}},</span></td>
         <td><a class="btn btn-info" [routerLink]="['/actions/editPlayer',i.id]">Editar</a>&nbsp;<a class="btn btn-danger" (click)="deletePlayer(i.id)">Borrar</a></td>
