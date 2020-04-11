@@ -14,13 +14,13 @@ export class RegisterPlayerComponent implements OnInit {
   edit:boolean;
 
   player:any;
+  accion:string;
   
   constructor(private rs:RequestsService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.player = {};
-    console.log("SE EDITA?");
-    console.log(this.edit);
+
     if(this.edit){
       this.route.params.subscribe(params => {
         let idPlayer = params['id'];
@@ -33,11 +33,13 @@ export class RegisterPlayerComponent implements OnInit {
             selectedRoles.push(rol.id);
             //$('#roles option[value="'+rol.id+'"]').attr('selected', 'selected');
           });
-
+          this.accion = "Editar";
           this.player.roles = selectedRoles;
 
         });
      });
+    }else{
+      this.accion = "Registrar";
     }
   }
 
