@@ -1,1 +1,66 @@
-<p>register-result works!</p>
+<div class="container bajar-2Percent">
+    <form method="POST" #formPlayer="ngForm">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <!--TODO INSERTAR LOS HEROES EN LA BBDD PARA EVITAR UN LISTADO DE HTML INNECESARIO-->
+                <label for="heroe">Héroe</label>
+                <!--<input type="text" class="form-control" id="country" required name="country" [(ngModel)]="player.pais" placeholder="Escriba su pais">-->
+                <select id="heroe" name="heroe" [(ngModel)]="resultado.heroe" class="form-control" required>
+                    <option disabled [ngValue] = "resultado.heroe">Eliga Héroe</option>
+                    <option [ngValue] = "resultado.heroe" value="Sven">Sven</option>
+                    <option [ngValue] = "resultado.heroe" value="Phantom Assasin">Phantom Assasin</option>
+                    <option [ngValue] = "resultado.heroe" value="Warlock">Warlock</option>
+                    <option [ngValue] = "resultado.heroe" value="Crystal Maiden">Crystal Maiden</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="roles">Rol</label>
+                <select id="roles" class="form-control" [(ngModel)]="resultado.rol" name="rol" required>
+                    <option disabled [ngValue] = "resultado.rol">Eliga rol</option>
+                    <option value="1" [ngValue] = "resultado.rol">Senda Segura</option>
+                    <option value="2" [ngValue] = "resultado.rol">Senda Central</option>
+                    <option value="3" [ngValue] = "resultado.rol">Senda Lateral</option>
+                    <option value="4" [ngValue] = "resultado.rol">Apoyo</option>
+                    <option value="5" [ngValue] = "resultado.rol">Apoyo Primario</option>
+                  </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="asesinatos">Asesinatos</label>
+                <input type="number" class="form-control" id="asesinatos" min="0" name="asesinatos" [(ngModel)]="resultado.numAsesinatos" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="muertes">Muertes</label>
+                <input type="number" class="form-control" id="muertes" min="0" name="muertes" [(ngModel)]="resultado.numMuertes" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="oroacumulado">Oro Acumulado</label>
+                <input type="number" class="form-control" min="0" name="oroAcumulado" [(ngModel)]="resultado.oroAcumulado" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="resultado">Resultado</label>
+                <select id="resultado" class="form-control" name="resultado" [(ngModel)]="resultado.resultado" required>
+                    <option disabled [ngValue] = "resultado.resultado">Eliga resultado</option>
+                    <option [ngValue] = "resultado.resultado" value="Victoria">Victoria</option>
+                    <option [ngValue] = "resultado.resultado" value="Derrota">Derrota</option>
+                  </select>
+            </div>
+        </div>
+        <button type="button" [disabled]="!formPlayer.valid" class="btn btn-primary">Registrar</button>
+    </form>
+</div>
+
+
+<!--
+    Para el futuro select
+                <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+            </div>
+-->

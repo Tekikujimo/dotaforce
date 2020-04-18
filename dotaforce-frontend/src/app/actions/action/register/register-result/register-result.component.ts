@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterResultComponent implements OnInit {
 
+  resultado:any;
+
   constructor() { }
 
   ngOnInit(): void {
+  this.resultado = {
+    numAsesinatos:0,
+    numMuertes:0,
+    oroAcumulado:0
+  };
   }
 
 }

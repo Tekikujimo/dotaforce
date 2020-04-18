@@ -22,5 +22,11 @@ public class ResultadosController {
 		return resultadosService.ObtenerTodosLosResultados();
 	}
 	
+	@RequestMapping(value = "/saveResult" , method=RequestMethod.POST)
+	public Resultado guardarResultado(Resultado resultado){
+		return resultadosService.saveResultado(resultado);
+	}
+	
+	
 	
 }
