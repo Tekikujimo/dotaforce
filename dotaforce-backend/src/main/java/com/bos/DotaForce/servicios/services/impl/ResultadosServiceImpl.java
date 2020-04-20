@@ -21,4 +21,10 @@ public class ResultadosServiceImpl implements ResultadosService {
 		return resultadoRepository.findAll();
 	}
 
+	@Override
+	public Resultado saveResultado(Resultado resultado) {
+		// TODO Auto-generated method stub
+		return resultadoRepository.save(resultado);
+	}
+
 }

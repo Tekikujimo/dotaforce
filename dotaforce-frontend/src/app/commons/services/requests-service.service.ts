@@ -14,6 +14,14 @@ export class RequestsService {
     return this.http.get('/players/getAll');
   }
 
+  getHeroes():Observable<Object>{
+    return this.http.get('/heroes/getAll');
+  }
+
+  getPaises():Observable<Object>{
+    return this.http.get('/paises/getAll');
+  }
+
   getPlayer(idPlayer:any):Observable<Object>{
     return this.http.get('/players/getPlayer/'+idPlayer);
   } 
