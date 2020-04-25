@@ -3,10 +3,11 @@ package com.bos.DotaForce.servicios.services;
 import java.util.List;
 
 import com.bos.DotaForce.modelos.Resultado;
+import com.bos.DotaForce.modelos.DTO.JugadorResultadoDTO;
 
 public interface ResultadosService {
-	List<Resultado> ObtenerTodosLosResultados();
+	List<JugadorResultadoDTO> ObtenerTodosLosResultados();
 	
-	Resultado saveResultado(Resultado resultado);
+	Resultado saveResultado(JugadorResultadoDTO resultado);
 	
 }

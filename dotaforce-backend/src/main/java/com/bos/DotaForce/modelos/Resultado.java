@@ -1,6 +1,10 @@
 package com.bos.DotaForce.modelos;
 
+import java.util.Date;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "Resultados")
@@ -28,7 +32,14 @@ public class Resultado{
     
     @Column(name ="puntos")
     private int puntos;
-
+    
+    @Column(name="fechaPartida")
+    @Type(type = "date")
+    private Date fechaPartida;
+    
+    @Column(name ="rol")
+    private String rol;
+    
 	public Long getId() {
 		return id;
 	}
@@ -85,6 +96,25 @@ public class Resultado{
 		this.puntos = puntos;
 	}
 
+	public Date getFechaPartida() {
+		return fechaPartida;
+	}
+
+	public void setFechaPartida(Date fechaPartida) {
+		this.fechaPartida = fechaPartida;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+	
+	
+	
+	
     /*@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Jugador.class, mappedBy="resultado")
     private Jugador jugador;*/
 

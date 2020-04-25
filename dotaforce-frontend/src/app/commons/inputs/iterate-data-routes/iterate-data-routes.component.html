@@ -12,7 +12,18 @@
 </ng-container>
 
 <ng-container *ngIf="keyword=='results'">
-    <!--TODO-->
+    <tr *ngFor="let i of data">
+        <td>{{i.jugador.nickname}}</td>
+        <td>{{i.heroe}}</td>
+        <td>{{i.rol}}</td>
+        <td>{{i.asesinatos}}</td>
+        <td>{{i.muertes}}</td>
+        <td>{{i.oroAcumulado}}</td>
+        <td>{{i.resultado}}</td>
+        <td>{{i.puntos}}</td>
+        <td>{{(i.fechaPartida==null?'sin Registrar':i.fechaPartida | date:'dd/MM/yyyy')}}</td>
+        <!--<td><a class="btn btn-info" [routerLink]="['/actions/checkResults',i.id]">Ver Resultados</a>&nbsp;<a class="btn btn-info" [routerLink]="['/actions/editPlayer',i.id]">Editar</a>&nbsp;<a class="btn btn-danger" (click)="deletePlayer(i.id)">Borrar</a></td>-->
+    </tr>
 </ng-container>
 
 <ng-container *ngIf="keyword=='users'">

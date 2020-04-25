@@ -46,5 +46,9 @@ export class RequestsService {
     return this.http.post('/players/savePlayer',player);
   }
 
+  saveResult(result:any):Observable<Object>{
+    return this.http.post('/results/saveResult',result);
+  }
+
 
 }

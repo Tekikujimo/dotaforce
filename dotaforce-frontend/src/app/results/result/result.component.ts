@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RequestsService} from '../../commons/services/requests-service.service'
 
 @Component({
   selector: 'app-result',
@@ -8,11 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class ResultComponent implements OnInit {
 
   results:any;
-  columNames:any[] = ["Jugador","Héroe","Asesinatos","Muertes","Oro Acumulado","Resultado","Puntos","Acciones"]; 
+  columNames:any[] = ["Jugador","Héroe","Rol","Asesinatos","Muertes","Oro Acumulado","Resultado","Puntos","Fecha de Partida","Acciones"]; 
 
-  constructor() { }
+  constructor(private rs:RequestsService) {
+  }
 
   ngOnInit(): void {
+
+    this.rs.getResults().subscribe(result=>{
+      this.results = result;
+      console.log(this.results);
+    });
   }
 
 }
