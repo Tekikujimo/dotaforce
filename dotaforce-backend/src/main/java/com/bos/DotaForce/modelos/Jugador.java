@@ -41,7 +41,7 @@ public class Jugador{
     // El ManyToMany solo se usara si sabemos que nuestros roles seran usados por varios jugadores
     /* Si declaramos con list aparecera esta excepcion:
     org.hibernate.loader.MultipleBagFetchException: cannot simultaneously fetch multiple bags: [com.bos.DotaForce.modelos.Jugador.resultado, com.bos.DotaForce.modelos.Jugador.roles]*/
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     private Set<Rol> roles;
 
     @JoinTable(name = "jugador_resultados",
@@ -51,8 +51,8 @@ public class Jugador{
     // De Jugador --> resultados es la relacion
     // El OneToMany solo se usara si sabemos que nuestros resultados seran usados solo por un jugador en concreto y no por otros
     // El ManyToOne solo se usara si sabemos que un resultado sera usado por varios jugadores
-    @OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE,CascadeType.REMOVE})
-    private Set<Resultado> resultado;
+    @OneToMany(fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.REMOVE})
+    private Set<Resultado> resultados;
 
     public Long getId() {
         return id;
@@ -110,12 +110,12 @@ public class Jugador{
         this.roles = roles;
     }
 
-    public Set<Resultado> getResultado() {
-        return resultado;
+    public Set<Resultado> getResultados() {
+        return resultados;
     }
 
-    public void setResultado(Set<Resultado> resultado) {
-        this.resultado = resultado;
+    public void setResultados(Set<Resultado> resultados) {
+        this.resultados = resultados;
     }
 
         

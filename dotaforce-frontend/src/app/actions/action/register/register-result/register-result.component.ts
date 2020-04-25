@@ -16,9 +16,10 @@ export class RegisterResultComponent implements OnInit {
   constructor(private rs:RequestsService) { }
 
   ngOnInit(): void {
+
   this.resultado = {
-    numAsesinatos:0,
-    numMuertes:0,
+    asesinatos:0,
+    muertes:0,
     oroAcumulado:0
   };
    
@@ -32,12 +33,20 @@ export class RegisterResultComponent implements OnInit {
 
   $("#resultado").change((e:any)=>{
       if(e.target.value == "Victoria"){
-        $("#puntos").val(2);
+        this.resultado.puntos = 2;
       }else if(e.target.value == "Derrota"){
-        $("#puntos").val(1);
+        this.resultado.puntos = 1;
       }
   });
 
+  }
+
+  saveResultado():void{
+    this.rs.saveResult(this.resultado).subscribe(result=>{
+      if(result!=null){
+        this.resultado={};
+      };
+    });
   }
 
 }
