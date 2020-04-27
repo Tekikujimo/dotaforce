@@ -9,7 +9,11 @@
 
 <!--Componente de registrarResultado-->
 <ng-container *ngIf="accion=='addResult'">
-    <app-register-result></app-register-result>
+    <app-register-result [edit]="false"></app-register-result>
+</ng-container>
+
+<ng-container *ngIf="accion=='editResult'">
+    <app-register-result [edit]="true"></app-register-result>
 </ng-container>
 
 <!--Componente de AltaUsuario-->

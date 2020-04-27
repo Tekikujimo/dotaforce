@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -47,12 +48,29 @@ public class ResultadosServiceImpl implements ResultadosService {
 	@Transactional
 	public Resultado saveResultado(JugadorResultadoDTO resultadoDTO) {
 		
+		Boolean existeResultado = false;
+		
 		Resultado resultado = createInstanceResultado(resultadoDTO);
 		Jugador jugador = resultadoDTO.getJugador();		
-		resultado = resultadoRepository.save(resultado);			
-		jugador.getResultados().add(resultado);		
-		jugadorRepository.save(jugador);
+		resultado = resultadoRepository.save(resultado);	
 		
+		List<Resultado> resultsBBDD = resultadoRepository.findResultsByJugadorId(jugador.getId());
+		
+		for(int y = 0 ; y<resultsBBDD.size() ; y++) {
+			Resultado resultLoop = resultsBBDD.get(y);
+			if(resultLoop.getId().equals(resultado.getId())) {
+				existeResultado = true;
+				break;
+			}
+		}
+		
+		//Esto es para comprobar si es una alta de nuevo resultado y prevenir el error de Multiple representations of the same entity [com.bos.DotaForce.modelos.Resultado#30] are being merged. Managed
+		if(!existeResultado) {
+			jugador.getResultados().add(resultado);		
+			jugadorRepository.save(jugador);			
+		}
+		
+			
 		return resultado;
 		//return resultadoRepository.save(resultado);
 	}
@@ -60,6 +78,10 @@ public class ResultadosServiceImpl implements ResultadosService {
 	public JugadorResultadoDTO createInstanceJugadorResultado(Resultado r) {
 		JugadorResultadoDTO jr = new JugadorResultadoDTO();
 		
+		if(r.getId() != null) {
+			jr.setId(r.getId());
+		}
+				
 		jr.setAsesinatos(r.getNumAsesinatos());
 		jr.setMuertes(r.getNumMuertes());
 		jr.setHeroe(r.getHeroe());
@@ -77,6 +99,10 @@ public class ResultadosServiceImpl implements ResultadosService {
 	public Resultado createInstanceResultado(JugadorResultadoDTO resultadoDTO) {
 		Resultado result = new Resultado();
 		
+		if(resultadoDTO.getId() != null) {
+			result.setId(resultadoDTO.getId());	
+		}
+		
 		result.setNumAsesinatos(resultadoDTO.getAsesinatos());
 		result.setNumMuertes(resultadoDTO.getMuertes());
 		result.setOroAcumulado(resultadoDTO.getOroAcumulado());
@@ -87,6 +113,21 @@ public class ResultadosServiceImpl implements ResultadosService {
 		result.setRol(resultadoDTO.getRol());
 		
 		return result;
+	}
+
+	@Override
+	public JugadorResultadoDTO obtenerResultado(Long idResultado) {
+		Resultado r = resultadoRepository.findResultById(idResultado);
+		JugadorResultadoDTO jrdto = createInstanceJugadorResultado(r);		
+		return jrdto ;
+	}
+
+	
+	@Override
+	public void borrarResultado(Long idResultado) {
+		resultadoRepository.deleteRelationPlayerResultByResultId(idResultado);
+		resultadoRepository.deleteResultById(idResultado);	
+
 	}
 
 }

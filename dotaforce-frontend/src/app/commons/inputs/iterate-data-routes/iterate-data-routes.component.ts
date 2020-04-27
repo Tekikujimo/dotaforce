@@ -16,22 +16,29 @@ export class IterateDataRoutesComponent implements OnInit {
   @Input()
   keyword:any
 
-  ngOnInit(): void {
-    console.log("VER PARAMETROS");
-    console.log(this.data);
-    console.log(this.keyword);
-  }
+  ngOnInit(): void {}
 
   deletePlayer(idPlayer): void{
+    this.deleteRow(idPlayer,this.rs.deletePlayer(idPlayer).subscribe(result=>{}));  
+  }
+
+  deleteResult(idResult): void{
+    this.deleteRow(idResult,this.rs.deleteResult(idResult).subscribe(result=>{}));  
+  }
+
+  deleteRow(idObject:number,deleteRowBBDD:any):void{
     for(let i = 0; i<this.data.length ; i++){
-      if(this.data[i].id === idPlayer){
+      if(this.data[i].id === idObject){
         let elementToRemove = this.data.indexOf(this.data[i]);
-        this.data.splice(elementToRemove,1);
-        this.rs.deletePlayer(idPlayer).subscribe(result=>{});
+        this.data.splice(elementToRemove,1);       
+        if(typeof deleteRowBBDD === 'function'){
+          deleteRowBBDD();
+        }
         break;
       }
     }
-
   }
+
+
 
 }

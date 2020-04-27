@@ -1,7 +1,6 @@
 package com.bos.DotaForce.modelos;
 
 import javax.persistence.*;
-import java.util.*; 
 
 @Entity
 @Table(name = "Roles")

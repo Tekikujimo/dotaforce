@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input } from '@angular/core';
 import {RequestsService} from '../../../../commons/services/requests-service.service'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-register-result',
@@ -12,8 +13,11 @@ export class RegisterResultComponent implements OnInit {
   resultado:any;
   players:any;
   heroes:any;
+  @Input()
+  edit:boolean;
+  accion:string;
 
-  constructor(private rs:RequestsService) { }
+  constructor(private rs:RequestsService,private route:ActivatedRoute) {}
 
   ngOnInit(): void {
 
@@ -22,6 +26,20 @@ export class RegisterResultComponent implements OnInit {
     muertes:0,
     oroAcumulado:0
   };
+
+  if(this.edit){  
+  this.resultado["jugador"] = {};
+    this.route.params.subscribe(params => {
+      let idResultado = params['id'];
+      this.rs.getResult(idResultado).subscribe(result =>{
+        this.resultado = result;
+        console.log(this.resultado);
+      });      
+    }); 
+    this.accion = "Editar";
+  }else{
+    this.accion = "Registrar";
+  }
    
   this.rs.getPlayers().subscribe(data=>{
     this.players = data;
@@ -43,8 +61,12 @@ export class RegisterResultComponent implements OnInit {
 
   saveResultado():void{
     this.rs.saveResult(this.resultado).subscribe(result=>{
-      if(result!=null){
-        this.resultado={};
+      if(result!=null && !this.edit){
+        this.resultado = {
+          asesinatos:0,
+          muertes:0,
+          oroAcumulado:0
+        };
       };
     });
   }

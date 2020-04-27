@@ -22,7 +22,7 @@
         <td>{{i.resultado}}</td>
         <td>{{i.puntos}}</td>
         <td>{{(i.fechaPartida==null?'sin Registrar':i.fechaPartida | date:'dd/MM/yyyy')}}</td>
-        <!--<td><a class="btn btn-info" [routerLink]="['/actions/checkResults',i.id]">Ver Resultados</a>&nbsp;<a class="btn btn-info" [routerLink]="['/actions/editPlayer',i.id]">Editar</a>&nbsp;<a class="btn btn-danger" (click)="deletePlayer(i.id)">Borrar</a></td>-->
+        <td><a class="btn btn-info" [routerLink]="['/actions/editResult',i.id]">Editar</a>&nbsp;<a class="btn btn-danger" (click)="deleteResult(i.id)">Borrar</a></td>
     </tr>
 </ng-container>
 

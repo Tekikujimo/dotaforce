@@ -28,6 +28,7 @@
                 <label for="country">Pais</label>
                 <!--<input type="text" class="form-control" id="country" required name="country" [(ngModel)]="player.pais" placeholder="Escriba su pais">-->
                 <select id="country" required name="country" [(ngModel)]="player.pais" class="form-control">
+                    <option disabled [ngValue] = "undefined">Seleccione el pais</option>                  
                     <option value="Afganistán">Afganistán</option>
                     <option value="Albania">Albania</option>
                     <option value="Alemania">Alemania</option>
