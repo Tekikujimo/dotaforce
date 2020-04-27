@@ -12,9 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bos.DotaForce.modelos.Jugador;
+import com.bos.DotaForce.modelos.Resultado;
 import com.bos.DotaForce.modelos.Rol;
 import com.bos.DotaForce.modelos.DTO.JugadorDTO;
 import com.bos.DotaForce.servicios.repositories.JugadoresRepository;
+import com.bos.DotaForce.servicios.repositories.ResultadosRepository;
 import com.bos.DotaForce.servicios.repositories.RolesRepository;
 import com.bos.DotaForce.servicios.services.JugadoresService;
 
@@ -27,6 +29,9 @@ public class JugadoresServiceImpl implements JugadoresService{
 	@Autowired
 	private RolesRepository rolesRepository;
 	
+	@Autowired
+	private ResultadosRepository resultadoRepository;
+	
 	@Override
 	public List<Jugador> ObtenerTodosLosJugadores() {
 		// TODO Auto-generated method stub
@@ -38,18 +43,40 @@ public class JugadoresServiceImpl implements JugadoresService{
 	public Jugador saveJugador(JugadorDTO jugadorDTO) {
 		Jugador player = new Jugador();
 		Set<Rol> rolesPlayer = new HashSet<>();
+		List<Resultado> resultadosBBDD = new ArrayList<>();
+		Set<Resultado> resultados = new HashSet<>();
+
 		
-		player.setId(jugadorDTO.getId());
+		if(jugadorDTO.getId() != null) {
+			player.setId(jugadorDTO.getId());
+			resultadosBBDD = resultadoRepository.findResultsByJugadorId(player.getId());
+		}
+		
 		player.setEdad(jugadorDTO.getEdad());
 		player.setNickname(jugadorDTO.getNickname());
 		player.setNombre(jugadorDTO.getNombre());
 		player.setPais(jugadorDTO.getPais());
 		player.setFechaNacimiento(jugadorDTO.getFechaNacimiento());
-		jugadorDTO.getRoles().forEach(rolId->{
-			Rol rol = rolesRepository.findRolById(rolId);
-			rolesPlayer.add(rol);
-		});
+		
+		if(jugadorDTO.getRoles()!=null) {
+			jugadorDTO.getRoles().forEach(rolId->{
+				Rol rol = rolesRepository.findRolById(rolId);
+				rolesPlayer.add(rol);
+			});
+		}
+		
+		
+		
+		if(resultadosBBDD!=null && !resultadosBBDD.isEmpty()) {
+			resultadosBBDD.forEach(result->{
+				Resultado res = resultadoRepository.findResultById(result.getId());
+				resultados.add(res);
+			});
+		}
+				
 		player.setRoles(rolesPlayer);
+		player.setResultados(resultados);
+		
 
 		return jugadorRepository.save(player);				
 	}

@@ -5,11 +5,16 @@
                 <!--TODO INSERTAR LOS HEROES EN LA BBDD PARA EVITAR UN LISTADO DE HTML INNECESARIO-->
                 <label for="Jugador">Jugador</label>
                 <!--<input type="text" class="form-control" id="country" required name="country" [(ngModel)]="player.pais" placeholder="Escriba su pais">-->
-                <select id="jugador" name="jugador" [(ngModel)]="resultado.jugador" class="form-control" required>
-                    <option disabled [ngValue] = "undefined">Seleccione el jugador</option>
-                    <!-- Leer el jugador -->
-                    <option *ngFor="let j of players" [ngValue] = "j">{{j.nickname}}</option>
-                </select>
+                <!-- Leer el jugador -->
+                <ng-container *ngIf="edit==false">
+                    <select id="jugador" name="jugador" [(ngModel)]="resultado.jugador" class="form-control" required>
+                            <option disabled [ngValue] = "undefined">Seleccione el jugador</option>
+                            <option *ngFor="let j of players" [ngValue] = "j">{{j.nickname}}</option>
+                        </select>
+                </ng-container>
+                <ng-container *ngIf="edit==true">
+                    <input type="text" class="form-control" name="jugador" disabled required [(ngModel)]="resultado.jugador.nickname" id="jugador" placeholder="Jugador">
+                </ng-container>
             </div>
             <div class="form-group col-md-4">
                 <!--TODO INSERTAR LOS HEROES EN LA BBDD PARA EVITAR UN LISTADO DE HTML INNECESARIO-->
@@ -65,7 +70,7 @@
                 <input type="number" class="form-control" id="puntos" min="0" name="puntos" disabled [(ngModel)]="resultado.puntos" required placeholder="Valor correpondiente al resultado a elegir">
             </div>
         </div>
-        <button type="button" [disabled]="!formResult.valid" (click)="saveResultado()" class="btn btn-primary">Registrar</button>
+        <button type="button" [disabled]="!formResult.valid" (click)="saveResultado()" class="btn btn-primary">{{accion}}</button>
     </form>
 </div>
 

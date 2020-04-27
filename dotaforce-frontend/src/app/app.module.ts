@@ -11,7 +11,6 @@ import { BodyContentComponent } from './commons/body-content/body-content.compon
 import { AppRoutingModule } from './app-routing.module';
 import { PlayerComponent } from './players/player/player.component';
 import { ResultComponent } from './results/result/result.component';
-import { RolComponent } from './roles/rol/rol.component';
 import { UserComponent } from './users/user/user.component';
 import { ActionComponent } from './actions/action/action.component';
 import { IterateDataRoutesComponent } from './commons/inputs/iterate-data-routes/iterate-data-routes.component';
@@ -20,7 +19,8 @@ import { IterateDataRoutesComponent } from './commons/inputs/iterate-data-routes
 import {RequestsService} from './commons/services/requests-service.service';
 import { RegisterPlayerComponent } from './actions/action/register/register-player/register-player.component';
 import { RegisterResultComponent } from './actions/action/register/register-result/register-result.component';
-import { RegisterUserComponent } from './actions/action/register/register-user/register-user.component'
+import { RegisterUserComponent } from './actions/action/register/register-user/register-user.component';
+import { RankingComponent } from './ranking/ranking.component'
 
 @NgModule({
   declarations: [
@@ -30,13 +30,13 @@ import { RegisterUserComponent } from './actions/action/register/register-user/r
     BodyContentComponent,
     PlayerComponent,
     ResultComponent,
-    RolComponent,
     UserComponent,
     ActionComponent,
     IterateDataRoutesComponent,
     RegisterPlayerComponent,
     RegisterResultComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,

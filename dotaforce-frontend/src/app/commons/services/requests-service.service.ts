@@ -25,17 +25,21 @@ export class RequestsService {
   getPlayer(idPlayer:any):Observable<Object>{
     return this.http.get('/players/getPlayer/'+idPlayer);
   } 
-
+  
   deletePlayer(idPlayer:any):Observable<Object>{
     return this.http.delete('/players/deletePlayer/'+idPlayer);
   } 
 
+  getResult(idResult:any):Observable<Object>{
+    return this.http.get('/results/getResult/'+idResult);
+  } 
+
+  deleteResult(idResult:any):Observable<Object>{
+    return this.http.delete('/results/deleteResult/'+idResult);
+  } 
+
   getResults():Observable<Object>{
     return this.http.get('/results/getAll');
-  }
-
-  getRoles():Observable<Object>{
-    return this.http.get('/roles/getAll');
   }
 
   getUsers():Observable<Object>{
