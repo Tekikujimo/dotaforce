@@ -130,4 +130,14 @@ public class ResultadosServiceImpl implements ResultadosService {
 
 	}
 
+	@Override
+	public List<JugadorResultadoDTO> obtenerResultadosPorJugador(Long idJugador) {
+		List<Resultado> resultados = resultadoRepository.findResultsByJugadorId(idJugador);
+		List<JugadorResultadoDTO> resultadosDTO = new ArrayList<JugadorResultadoDTO>();		
+		for(int i=0 ; i< resultados.size() ; i++) {
+			resultadosDTO.add(createInstanceJugadorResultado(resultados.get(i)));
+		}		
+		return resultadosDTO;
+	}
+
 }
