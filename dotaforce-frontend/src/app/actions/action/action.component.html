@@ -16,6 +16,11 @@
     <app-register-result [edit]="true"></app-register-result>
 </ng-container>
 
+<ng-container *ngIf="accion=='checkPlayerResults'">
+    <app-body-content [columNames]="columNames" [data]="results" keyword="results"></app-body-content>
+</ng-container>
+
+
 <!--Componente de AltaUsuario-->
 <ng-container *ngIf="accion=='addUser'">
     <app-register-user></app-register-user>

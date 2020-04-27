@@ -42,6 +42,10 @@ export class RequestsService {
     return this.http.get('/results/getAll');
   }
 
+  getResultsByPlayer(idPlayer):Observable<Object>{
+    return this.http.get('/results/getResultsByPlayer/'+idPlayer);
+  }
+
   getUsers():Observable<Object>{
     return this.http.get('/users/getAll');
   }

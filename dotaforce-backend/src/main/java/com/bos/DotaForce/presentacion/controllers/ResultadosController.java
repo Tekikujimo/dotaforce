@@ -42,6 +42,11 @@ public class ResultadosController {
 		resultadosService.borrarResultado(idResultado);
 	}
 	
+	@RequestMapping(value="/getResultsByPlayer/{idPlayer}", method=RequestMethod.GET)
+	public List<JugadorResultadoDTO> obtenerResultadosPorJugador(@PathVariable Long idPlayer){
+		return resultadosService.obtenerResultadosPorJugador(idPlayer);		
+	}
+	
 	
 	
 }
