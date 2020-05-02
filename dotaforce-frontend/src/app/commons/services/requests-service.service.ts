@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -8,7 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class RequestsService {
 
-  constructor(private http: HttpClient) { }
+  myMethod$: Observable<any>;
+  private myMethodSubject = new Subject<any>();
+
+  constructor(private http: HttpClient) {
+    this.myMethod$ = this.myMethodSubject.asObservable();
+  }
+
+  sendComponent(data) {
+    console.log("Dato a enviar al componente ",data);
+    this.myMethodSubject.next(data);
+  }
 
   getPlayers():Observable<Object>{
     return this.http.get('/players/getAll');

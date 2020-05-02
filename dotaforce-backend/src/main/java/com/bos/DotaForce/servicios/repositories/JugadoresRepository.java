@@ -16,6 +16,9 @@ public interface JugadoresRepository extends JpaRepository<Jugador, Long> {
 	@Query(value="SELECT * FROM JUGADORES j join JUGADOR_RESULTADOS jr on j.ID = jr.JUGADOR_ID_FK AND jr.RESULTADO_ID_FK=?1",nativeQuery=true)
 	Jugador findPlayerByIdResult(Long idResult);
 	
+	@Query(value="SELECT * FROM JUGADORES j WHERE j.ID=?1",nativeQuery=true)
+	Jugador findPlayerById(Long idPlayer);
+	
 	//List<Jugador> findByRolesNum_posicion(int posicion);
 
 }

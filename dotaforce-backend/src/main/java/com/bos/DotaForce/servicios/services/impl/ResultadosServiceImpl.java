@@ -66,6 +66,7 @@ public class ResultadosServiceImpl implements ResultadosService {
 		
 		//Esto es para comprobar si es una alta de nuevo resultado y prevenir el error de Multiple representations of the same entity [com.bos.DotaForce.modelos.Resultado#30] are being merged. Managed
 		if(!existeResultado) {
+			jugador = jugadorRepository.findPlayerById(jugador.getId());
 			jugador.getResultados().add(resultado);		
 			jugadorRepository.save(jugador);			
 		}

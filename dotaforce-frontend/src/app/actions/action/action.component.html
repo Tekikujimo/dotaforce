@@ -18,6 +18,26 @@
 
 <ng-container *ngIf="accion=='checkPlayerResults'">
     <app-body-content [columNames]="columNames" [data]="results" keyword="results"></app-body-content>
+    <div *ngIf="sumResult">
+        <table id="list" class="centrar bajar-2Percent">
+            <thead>
+                <tr>
+                    <th>Asesinatos Totales</th>
+                    <th>Muertes Totales</th>
+                    <th>Oro Total Acumulado</th>
+                    <th>Puntos Totales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{totalAsesinatos}}</td>
+                    <td>{{totalMuertes}}</td>
+                    <td>{{totalOroAcumulado}}</td>
+                    <td>{{totalPuntos}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </ng-container>
 
 

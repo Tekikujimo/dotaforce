@@ -8,7 +8,14 @@ import {RequestsService} from '../../services/requests-service.service';
 })
 export class IterateDataRoutesComponent implements OnInit {
 
-  constructor(private rs:RequestsService) { }
+
+  actionComponent:any;
+
+  constructor(private rs:RequestsService) { 
+    this.rs.myMethod$.subscribe((data)=>{
+      this.actionComponent=data;
+    });
+  }
 
   @Input()
   data:any
@@ -23,12 +30,21 @@ export class IterateDataRoutesComponent implements OnInit {
   }
 
   deleteResult(idResult): void{
-    this.deleteRow(idResult,this.rs.deleteResult(idResult).subscribe(result=>{}));  
+    this.deleteRow(idResult,this.rs.deleteResult(idResult).subscribe(result=>{}),true);  
   }
 
-  deleteRow(idObject:number,deleteRowBBDD:any):void{
+  deleteRow(idRow:number,deleteRowBBDD:any,isRowResult?:boolean):void{
     for(let i = 0; i<this.data.length ; i++){
-      if(this.data[i].id === idObject){
+      if(this.data[i].id === idRow){        
+        if(isRowResult==true){
+          this.actionComponent.totalAsesinatos-=this.data[i].asesinatos;
+          this.actionComponent.totalMuertes-=this.data[i].muertes;
+          this.actionComponent.totalOroAcumulado-=this.data[i].oroAcumulado;
+          this.actionComponent.totalPuntos-=this.data[i].puntos;
+          if(this.actionComponent.totalAsesinatos <= 0 && this.actionComponent.totalMuertes <= 0 && this.actionComponent.totalOroAcumulado <= 0 && this.actionComponent.totalPuntos <= 0){
+            this.actionComponent.sumResult = false;
+          }
+        }
         let elementToRemove = this.data.indexOf(this.data[i]);
         this.data.splice(elementToRemove,1);       
         if(typeof deleteRowBBDD === 'function'){

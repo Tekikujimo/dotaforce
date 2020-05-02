@@ -1,33 +1,36 @@
 <div class="container bajar-2Percent">
-    <form method="POST" #formResult="ngForm">
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <!--TODO INSERTAR LOS HEROES EN LA BBDD PARA EVITAR UN LISTADO DE HTML INNECESARIO-->
-                <label for="Jugador">Jugador</label>
-                <!--<input type="text" class="form-control" id="country" required name="country" [(ngModel)]="player.pais" placeholder="Escriba su pais">-->
-                <!-- Leer el jugador -->
-                <ng-container *ngIf="edit==false">
-                    <select id="jugador" name="jugador" [(ngModel)]="resultado.jugador" class="form-control" required>
+    <div class="dotaforce-card">
+        <h1 class="title-header">{{accion}} Resultado</h1>
+
+        <form method="POST" #formResult="ngForm">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <!--TODO INSERTAR LOS HEROES EN LA BBDD PARA EVITAR UN LISTADO DE HTML INNECESARIO-->
+                    <label for="Jugador">Jugador</label>
+                    <!--<input type="text" class="form-control" id="country" required name="country" [(ngModel)]="player.pais" placeholder="Escriba su pais">-->
+                    <!-- Leer el jugador -->
+                    <ng-container *ngIf="edit==false">
+                        <select id="jugador" name="jugador" [(ngModel)]="resultado.jugador" class="form-control" required>
                             <option disabled [ngValue] = "undefined">Seleccione el jugador</option>
                             <option *ngFor="let j of players" [ngValue] = "j">{{j.nickname}}</option>
                         </select>
-                </ng-container>
-                <ng-container *ngIf="edit==true">
-                    <input type="text" class="form-control" name="jugador" disabled required [(ngModel)]="resultado.jugador.nickname" id="jugador" placeholder="Jugador">
-                </ng-container>
-            </div>
-            <div class="form-group col-md-4">
-                <!--TODO INSERTAR LOS HEROES EN LA BBDD PARA EVITAR UN LISTADO DE HTML INNECESARIO-->
-                <label for="heroe">Héroe</label>
-                <!--<input type="text" class="form-control" id="country" required name="country" [(ngModel)]="player.pais" placeholder="Escriba su pais">-->
-                <select id="heroe" name="heroe" [(ngModel)]="resultado.heroe" class="form-control" required>
+                    </ng-container>
+                    <ng-container *ngIf="edit==true">
+                        <input type="text" class="form-control" name="jugador" disabled required [(ngModel)]="resultado.jugador.nickname" id="jugador" placeholder="Jugador">
+                    </ng-container>
+                </div>
+                <div class="form-group col-md-4">
+                    <!--TODO INSERTAR LOS HEROES EN LA BBDD PARA EVITAR UN LISTADO DE HTML INNECESARIO-->
+                    <label for="heroe">Héroe</label>
+                    <!--<input type="text" class="form-control" id="country" required name="country" [(ngModel)]="player.pais" placeholder="Escriba su pais">-->
+                    <select id="heroe" name="heroe" [(ngModel)]="resultado.heroe" class="form-control" required>
                     <option disabled [ngValue] = "undefined">Seleccione el héroe</option>
                     <option *ngFor="let h of heroes" [ngValue] = "h.nombre">{{h.nombre}}</option>
                 </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="roles">Rol</label>
-                <select id="roles" class="form-control" [(ngModel)]="resultado.rol" name="rol" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="roles">Rol</label>
+                    <select id="roles" class="form-control" [(ngModel)]="resultado.rol" name="rol" required>
                     <option disabled [ngValue] = "undefined">Seleccione el rol</option>
                     <option value="Senda Segura">Senda Segura</option>
                     <option value="Senda Central">Senda Central</option>
@@ -35,43 +38,44 @@
                     <option value="Apoyo">Apoyo</option>
                     <option value="Apoyo Primario">Apoyo Primario</option>
                   </select>
+                </div>
+
             </div>
 
-        </div>
+            <div class="form-row">
 
-        <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="asesinatos">Asesinatos</label>
+                    <input type="number" class="form-control" id="asesinatos" min="0" name="asesinatos" [(ngModel)]="resultado.asesinatos" required>
+                </div>
 
-            <div class="form-group col-md-4">
-                <label for="asesinatos">Asesinatos</label>
-                <input type="number" class="form-control" id="asesinatos" min="0" name="asesinatos" [(ngModel)]="resultado.asesinatos" required>
+                <div class="form-group col-md-4">
+                    <label for="muertes">Muertes</label>
+                    <input type="number" class="form-control" id="muertes" min="0" name="muertes" [(ngModel)]="resultado.muertes" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="oroacumulado">Oro Acumulado</label>
+                    <input type="number" class="form-control" min="0" name="oroAcumulado" [(ngModel)]="resultado.oroAcumulado" required>
+                </div>
             </div>
 
-            <div class="form-group col-md-4">
-                <label for="muertes">Muertes</label>
-                <input type="number" class="form-control" id="muertes" min="0" name="muertes" [(ngModel)]="resultado.muertes" required>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="oroacumulado">Oro Acumulado</label>
-                <input type="number" class="form-control" min="0" name="oroAcumulado" [(ngModel)]="resultado.oroAcumulado" required>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="resultado">Resultado</label>
-                <select id="resultado" class="form-control" name="resultado" [(ngModel)]="resultado.resultado" required>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="resultado">Resultado</label>
+                    <select id="resultado" class="form-control" name="resultado" [(ngModel)]="resultado.resultado" required>
                     <option disabled [ngValue]="undefined">Seleccione el resultado</option>
                     <option value="Victoria">Victoria</option>
                     <option value="Derrota">Derrota</option>
                   </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="puntos">Puntos</label>
+                    <input type="number" class="form-control" id="puntos" min="0" name="puntos" disabled [(ngModel)]="resultado.puntos" required placeholder="Valor correpondiente al resultado a elegir">
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <label for="puntos">Puntos</label>
-                <input type="number" class="form-control" id="puntos" min="0" name="puntos" disabled [(ngModel)]="resultado.puntos" required placeholder="Valor correpondiente al resultado a elegir">
-            </div>
-        </div>
-        <button type="button" [disabled]="!formResult.valid" (click)="saveResultado()" class="btn btn-primary">{{accion}}</button>
-    </form>
+            <button type="button" [disabled]="!formResult.valid" (click)="saveResultado()" class="btn btn-primary">{{accion}}</button>
+        </form>
+    </div>
 </div>
 
 
