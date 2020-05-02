@@ -13,7 +13,7 @@
             <a class="btn btn-danger" (click)="deletePlayer(i.id)"><i class="fas fa-trash"></i></a>
         </td>
     </tr>
-    <div *ngIf="data.length==0">No hay resultados..</div>
+    <div style="color: antiquewhite !important;" *ngIf="(data!=undefined?data.length:null)==0">No hay resultados..</div>
 </ng-container>
 
 <ng-container *ngIf="keyword=='results'">
@@ -32,7 +32,7 @@
             <a class="btn btn-danger" (click)="deleteResult(i.id)"><i class="fas fa-trash"></i></a>
         </td>
     </tr>
-    <div *ngIf="data.length==0">No hay resultados..</div>
+    <div style="color: antiquewhite !important;" *ngIf="(data!=undefined?data.length:null)==0">No hay resultados..</div>
 </ng-container>
 
 <ng-container *ngIf="keyword=='users'">
