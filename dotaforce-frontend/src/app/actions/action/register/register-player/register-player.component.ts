@@ -15,6 +15,7 @@ export class RegisterPlayerComponent implements OnInit {
 
   player:any;
   accion:string;
+  title:string;
   
   constructor(private rs:RequestsService,private route:ActivatedRoute) { }
 
@@ -33,13 +34,15 @@ export class RegisterPlayerComponent implements OnInit {
             selectedRoles.push(rol.id);
             //$('#roles option[value="'+rol.id+'"]').attr('selected', 'selected');
           });
-          this.accion = "Editar";
+          this.accion = "fas fa-user-edit";
+          this.title = "Editar";
           this.player.roles = selectedRoles;
 
         });
      });
     }else{
-      this.accion = "Registrar";
+      this.accion = "fas fa-user-plus";
+      this.title = "Registrar";
     }
   }
 

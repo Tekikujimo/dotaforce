@@ -7,8 +7,13 @@
         <td>{{(i.fechaNacimiento==null?'sin Registrar':i.fechaNacimiento | date:'dd/MM/yyyy')}}</td>
         <td>{{i.nickname}}</td>
         <td><span *ngFor="let j of i.roles">{{j.denominacion}},</span></td>
-        <td><button class="btn btn-info" [routerLink]="['/actions/checkPlayerResults',i.id]">Ver Resultados</button>&nbsp;<a class="btn btn-info" [routerLink]="['/actions/editPlayer',i.id]">Editar</a>&nbsp;<a class="btn btn-danger" (click)="deletePlayer(i.id)">Borrar</a></td>
+        <td style="width:175px;">
+            <button class="btn btn-info" [routerLink]="['/actions/checkPlayerResults',i.id]"><i class="fas fa-clipboard-list"></i></button>&nbsp;
+            <a class="btn btn-info" [routerLink]="['/actions/editPlayer',i.id]"><i class="fas fa-user-edit"></i></a>&nbsp;
+            <a class="btn btn-danger" (click)="deletePlayer(i.id)"><i class="fas fa-trash"></i></a>
+        </td>
     </tr>
+    <div *ngIf="data.length==0">No hay resultados..</div>
 </ng-container>
 
 <ng-container *ngIf="keyword=='results'">
@@ -22,7 +27,10 @@
         <td>{{i.resultado}}</td>
         <td>{{i.puntos}}</td>
         <td>{{(i.fechaPartida==null?'sin Registrar':i.fechaPartida | date:'dd/MM/yyyy')}}</td>
-        <td><a class="btn btn-info" [routerLink]="['/actions/editResult',i.id]">Editar</a>&nbsp;<a class="btn btn-danger" (click)="deleteResult(i.id)">Borrar</a></td>
+        <td style="width:125px;">
+            <a class="btn btn-info" [routerLink]="['/actions/editResult',i.id]"><i class="fas fa-edit"></i></a> &nbsp;
+            <a class="btn btn-danger" (click)="deleteResult(i.id)"><i class="fas fa-trash"></i></a>
+        </td>
     </tr>
     <div *ngIf="data.length==0">No hay resultados..</div>
 </ng-container>

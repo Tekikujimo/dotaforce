@@ -16,6 +16,7 @@ export class RegisterResultComponent implements OnInit {
   @Input()
   edit:boolean;
   accion:string;
+  title:string;
 
   constructor(private rs:RequestsService,private route:ActivatedRoute) {}
 
@@ -36,9 +37,11 @@ export class RegisterResultComponent implements OnInit {
         console.log(this.resultado);
       });      
     }); 
-    this.accion = "Editar";
+    this.accion = "fas fa-edit";
+    this.title = "Editar";
   }else{
-    this.accion = "Registrar";
+    this.accion = "fas fa-plus";
+    this.title = "Registrar";
   }
    
   this.rs.getPlayers().subscribe(data=>{

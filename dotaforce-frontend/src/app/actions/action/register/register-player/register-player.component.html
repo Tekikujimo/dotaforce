@@ -1,6 +1,6 @@
 <div class="container bajar-2Percent">
     <div class="dotaforce-card">
-        <h1 class="title-header">{{accion}} Jugador</h1>
+        <h1 class="title-header">{{title}} Jugador</h1>
         <form method="POST" #formPlayer="ngForm">
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -61,7 +61,7 @@
                   </select>
                 </div>
             </div>
-            <button type="button" (click)="onSubmit()" [disabled]="!formPlayer.valid" class="btn btn-primary">{{accion}}</button>
+            <button type="button" (click)="onSubmit()" [disabled]="!formPlayer.valid" class="btn btn-primary"><i [class]="accion"></i></button>
         </form>
     </div>
 </div>
