@@ -36,3 +36,25 @@
     background-color: gray;
     color: white;
 }
+
+.dotaforce-card {
+    border-top-color: #5dcfe3 !important;
+    border-top-width: 3px !important;
+    font-size: 1rem;
+    line-height: 1.25;
+    background: #fff;
+    color: #4b4b4b;
+    margin-bottom: 1.5rem;
+    border-radius: .17rem;
+    box-shadow: none;
+    font-weight: 400;
+    margin-top: 30px;
+}
+
+.title-header {
+    padding: 1.25rem;
+    margin: auto;
+    width: 96%;
+    border-bottom: 1px solid #e7e7e7!important;
+    margin-bottom: 20px!important;
+}

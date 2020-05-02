@@ -7,7 +7,7 @@
         <td>{{(i.fechaNacimiento==null?'sin Registrar':i.fechaNacimiento | date:'dd/MM/yyyy')}}</td>
         <td>{{i.nickname}}</td>
         <td><span *ngFor="let j of i.roles">{{j.denominacion}},</span></td>
-        <td><a class="btn btn-info" [routerLink]="['/actions/checkPlayerResults',i.id]">Ver Resultados</a>&nbsp;<a class="btn btn-info" [routerLink]="['/actions/editPlayer',i.id]">Editar</a>&nbsp;<a class="btn btn-danger" (click)="deletePlayer(i.id)">Borrar</a></td>
+        <td><button class="btn btn-info" [routerLink]="['/actions/checkPlayerResults',i.id]">Ver Resultados</button>&nbsp;<a class="btn btn-info" [routerLink]="['/actions/editPlayer',i.id]">Editar</a>&nbsp;<a class="btn btn-danger" (click)="deletePlayer(i.id)">Borrar</a></td>
     </tr>
 </ng-container>
 
@@ -24,6 +24,7 @@
         <td>{{(i.fechaPartida==null?'sin Registrar':i.fechaPartida | date:'dd/MM/yyyy')}}</td>
         <td><a class="btn btn-info" [routerLink]="['/actions/editResult',i.id]">Editar</a>&nbsp;<a class="btn btn-danger" (click)="deleteResult(i.id)">Borrar</a></td>
     </tr>
+    <div *ngIf="data.length==0">No hay resultados..</div>
 </ng-container>
 
 <ng-container *ngIf="keyword=='users'">
