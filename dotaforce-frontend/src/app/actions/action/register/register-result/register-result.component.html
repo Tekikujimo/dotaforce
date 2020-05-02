@@ -1,6 +1,6 @@
 <div class="container bajar-2Percent">
     <div class="dotaforce-card">
-        <h1 class="title-header">{{accion}} Resultado</h1>
+        <h1 class="title-header">{{title}} Resultado</h1>
 
         <form method="POST" #formResult="ngForm">
             <div class="form-row">
@@ -73,7 +73,7 @@
                     <input type="number" class="form-control" id="puntos" min="0" name="puntos" disabled [(ngModel)]="resultado.puntos" required placeholder="Valor correpondiente al resultado a elegir">
                 </div>
             </div>
-            <button type="button" [disabled]="!formResult.valid" (click)="saveResultado()" class="btn btn-primary">{{accion}}</button>
+            <button type="button" [disabled]="!formResult.valid" (click)="saveResultado()" class="btn btn-primary"><i [class]="accion"></i></button>
         </form>
     </div>
 </div>
