@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.bos.DotaForce.modelos.Resultado;
 import com.bos.DotaForce.modelos.DTO.JugadorResultadoDTO;
+import com.bos.DotaForce.modelos.DTO.JugadorResultadosTotalesDTO;
 import com.bos.DotaForce.servicios.services.ResultadosService;
 
 @RestController
@@ -46,7 +47,11 @@ public class ResultadosController {
 	public List<JugadorResultadoDTO> obtenerResultadosPorJugador(@PathVariable Long idPlayer){
 		return resultadosService.obtenerResultadosPorJugador(idPlayer);		
 	}
-	
+
+	@RequestMapping(value="/getTotalResultsWithPlayers", method=RequestMethod.GET)
+	public List<JugadorResultadosTotalesDTO> obtenerResultadosTotalesConJugadores(){
+		return resultadosService.obtenerResultadosTotalesConJugadores();		
+	}
 	
 	
 }

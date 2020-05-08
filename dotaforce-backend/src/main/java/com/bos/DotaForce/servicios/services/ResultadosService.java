@@ -3,6 +3,7 @@ package com.bos.DotaForce.servicios.services;
 import java.util.List;
 import com.bos.DotaForce.modelos.Resultado;
 import com.bos.DotaForce.modelos.DTO.JugadorResultadoDTO;
+import com.bos.DotaForce.modelos.DTO.JugadorResultadosTotalesDTO;
 
 public interface ResultadosService {
 	List<JugadorResultadoDTO> ObtenerTodosLosResultados();
@@ -14,5 +15,7 @@ public interface ResultadosService {
 	JugadorResultadoDTO obtenerResultado(Long idResultado);
 	
 	void borrarResultado(Long idResultado);
+	
+	List<JugadorResultadosTotalesDTO> obtenerResultadosTotalesConJugadores();
 	
 }

@@ -20,6 +20,10 @@ export class RequestsService {
     this.myMethodSubject.next(data);
   }
 
+  getTotalResults():Observable<Object>{
+    return this.http.get('/results/getTotalResultsWithPlayers');
+  }  
+
   getPlayers():Observable<Object>{
     return this.http.get('/players/getAll');
   }
