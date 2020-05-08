@@ -37,12 +37,14 @@ export class IterateDataRoutesComponent implements OnInit {
     for(let i = 0; i<this.data.length ; i++){
       if(this.data[i].id === idRow){        
         if(isRowResult==true){
-          this.actionComponent.totalAsesinatos-=this.data[i].asesinatos;
-          this.actionComponent.totalMuertes-=this.data[i].muertes;
-          this.actionComponent.totalOroAcumulado-=this.data[i].oroAcumulado;
-          this.actionComponent.totalPuntos-=this.data[i].puntos;
-          if(this.actionComponent.totalAsesinatos <= 0 && this.actionComponent.totalMuertes <= 0 && this.actionComponent.totalOroAcumulado <= 0 && this.actionComponent.totalPuntos <= 0){
-            this.actionComponent.sumResult = false;
+          if(this.actionComponent!=undefined){
+            this.actionComponent.totalAsesinatos-=this.data[i].asesinatos;
+            this.actionComponent.totalMuertes-=this.data[i].muertes;
+            this.actionComponent.totalOroAcumulado-=this.data[i].oroAcumulado;
+            this.actionComponent.totalPuntos-=this.data[i].puntos;
+            if(this.actionComponent.totalAsesinatos <= 0 && this.actionComponent.totalMuertes <= 0 && this.actionComponent.totalOroAcumulado <= 0 && this.actionComponent.totalPuntos <= 0){
+              this.actionComponent.sumResult = false;
+            }
           }
         }
         let elementToRemove = this.data.indexOf(this.data[i]);

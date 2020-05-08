@@ -1,5 +1,7 @@
 package com.bos.DotaForce.servicios.services.impl;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.bos.DotaForce.modelos.Jugador;
 import com.bos.DotaForce.modelos.Resultado;
 import com.bos.DotaForce.modelos.DTO.JugadorResultadoDTO;
+import com.bos.DotaForce.modelos.DTO.JugadorResultadosTotalesDTO;
 import com.bos.DotaForce.servicios.repositories.JugadoresRepository;
 import com.bos.DotaForce.servicios.repositories.ResultadosRepository;
 import com.bos.DotaForce.servicios.services.ResultadosService;
@@ -139,6 +142,35 @@ public class ResultadosServiceImpl implements ResultadosService {
 			resultadosDTO.add(createInstanceJugadorResultado(resultados.get(i)));
 		}		
 		return resultadosDTO;
+	}
+
+	@Override
+	public List<JugadorResultadosTotalesDTO> obtenerResultadosTotalesConJugadores() {
+		/*
+		 Object[0] idJugador
+		 Object[1] totalAsesinatos 
+		 Object[2] totalMuertes
+		 Object[3] totalOroAcumulado 
+		 Object[4] totalPuntos
+		 */
+		
+		List<JugadorResultadosTotalesDTO> resultadosTotalesAMostrarFront = new ArrayList<JugadorResultadosTotalesDTO>();
+		
+		List<Object[]> totalResultsWithPlayers = resultadoRepository.findTotalResultsWithPlayers();
+		
+		for(int z = 0 ; z < totalResultsWithPlayers.size() ; z++) {
+			Object[] totalResultAndPlayer = totalResultsWithPlayers.get(z);				
+	        Integer idJugador = ((BigDecimal) totalResultAndPlayer[0]).intValue();
+	        Integer totalAsesinatos =  ((BigDecimal) totalResultAndPlayer[1]).intValue();
+	        Integer totalMuertes =  ((BigDecimal) totalResultAndPlayer[2]).intValue();
+	        Integer totalOroAcumulado =  ((BigDecimal) totalResultAndPlayer[3]).intValue();
+	        Integer totalPuntos =  ((BigDecimal) totalResultAndPlayer[4]).intValue(); 	         
+			Jugador j = jugadorRepository.findPlayerById(Long.valueOf(idJugador));
+			JugadorResultadosTotalesDTO jrtdto = new JugadorResultadosTotalesDTO(j,totalAsesinatos,totalMuertes,totalOroAcumulado,totalPuntos); 
+			resultadosTotalesAMostrarFront.add(jrtdto);
+		}
+		
+		return resultadosTotalesAMostrarFront;
 	}
 
 }

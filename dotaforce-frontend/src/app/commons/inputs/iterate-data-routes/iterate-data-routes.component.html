@@ -35,10 +35,25 @@
     <div style="color: antiquewhite !important;" *ngIf="(data!=undefined?data.length:null)==0">No hay resultados..</div>
 </ng-container>
 
+<!--
 <ng-container *ngIf="keyword=='users'">
-    <!--TODO-->
+ 
 </ng-container>
+-->
 
+<!--
 <ng-container *ngIf="keyword=='roles'">
-    <!--TODO-->
+</ng-container>
+-->
+
+<ng-container *ngIf="keyword=='ranking'">
+    <tr *ngFor="let item of data; let i = index">
+        <td>{{i+1}}º</td>
+        <td>{{item.jugador.nickname}}</td>
+        <td>{{item.totalAsesinatos}}</td>
+        <td>{{item.totalMuertes}}</td>
+        <td>{{item.totalOroAcumulado}}</td>
+        <td>{{item.totalPuntos}}</td>
+    </tr>
+    <div style="color: antiquewhite !important;" *ngIf="(data!=undefined?data.length:null)==0">No hay resultados..</div>
 </ng-container>
