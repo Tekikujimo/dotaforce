@@ -7,7 +7,10 @@
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "start-with-navigator": "ng serve -o",
+        "startssl": "set NODE_OPTIONS=--openssl-legacy-provider && npm run start-with-navigator"
+        
     },
     "private": true,
     "dependencies": {
